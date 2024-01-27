@@ -1,0 +1,91 @@
+:root{
+    --bgfooter : #1e1e1eee;
+    --contactColor: #ffffffce;
+    
+
+    --animFooter : 0.5s;
+}
+
+
+footer{
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(200px);
+    animation: beginFooter 0.5s 1 forwards;
+    animation-delay: 0.75s;
+}
+
+@keyframes beginFooter {
+    0%{
+        transform: translateY(200px);
+    }100%{
+        transform: translateY(0);
+    }
+}
+
+.linkedinImg{
+    background-color: var(--bgfooter);
+    border-radius: 10px;
+    width: 220px;;
+    transition: width var(--animFooter), opacity var(--animFooter);
+    opacity: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+.linkedinImg:hover{
+    width: 300px;
+    opacity: 100%;
+    cursor: pointer;
+}
+
+.linkedinImg:hover > img{
+    opacity: 80%;
+}
+
+.linkedinImg>img{
+    padding: 10px;
+    width: 200px;
+    opacity: 50%;
+    transition: opacity var(--animFooter);
+}
+
+.contact{
+    background-color: var(--bgfooter);
+    color: var(--contactColor);
+    border-radius: 10px;
+    padding: 10px;
+    opacity: 80%;
+    margin: 30px;
+    transition: opacity var(--animFooter);
+}
+
+.contact:hover{
+    opacity: 100%;
+}
+
+.contact:hover .emailContainer{
+    grid-template-rows: 1fr;
+    grid-template-columns : 1fr;
+}
+
+.nameContact{
+    font-weight: 600;
+    user-select: none;
+}
+
+.emailContainer{
+    display: grid;
+    grid-template-rows: 0fr;
+    grid-template-columns: 0fr;
+    transition: grid-template-rows var(--animFooter), grid-template-columns var(--animFooter);
+}
+
+.emailContact{
+    overflow: hidden;
+}

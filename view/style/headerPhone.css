@@ -1,0 +1,273 @@
+:root{
+    --titleColor : #c9aa4680;
+    --bgHeader : #1e1e1ebd;
+    
+    --titleColorNrml : #c9aa46;
+    --bgHeaderNrml : #1e1e1eee;
+    --lblColor : #787878;
+
+    --animTimeHvrTtl : 0.5s;
+
+    --bgfooter : #1e1e1eee;
+    --contactColor: #ffffffce;
+    
+
+    --animFooter : 0.5s;
+}
+
+header{
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 1rem;
+    left: 0;
+    z-index: 2;
+    
+
+    opacity: 0%;
+    transform: translateY(-5rem);
+    animation: beginTitle 0.5s 1 forwards;
+}
+
+.divTitle{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headerTitle{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+
+    background-color: var(--bgHeader);
+    color: var(--titleColor);
+    text-decoration: none;
+
+    text-align: center;
+    height: fit-content;
+    width: 15rem;
+    padding: 1rem;
+
+    border-radius: 0.5rem;
+    border-style : none;
+    box-shadow: 0px 5px 5px #11111180;
+
+    transition: width var(--animTimeHvrTtl), color var(--animTimeHvrTtl), background-color var(--animTimeHvrTtl);
+}
+
+.headerTitle:hover{
+    color: var(--titleColorNrml);
+    background-color: var(--bgHeaderNrml);
+    width: 18rem;
+
+    cursor: pointer;
+}
+
+.headerTitle:hover + .lblHeader{
+    opacity: 100%;
+    transform: translateY(1rem);
+}
+
+.lblHeader{
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 0px 1px 2px #00000080;
+    color: var(--lblColor);
+    opacity: 0%;
+    transition: opacity var(--animTimeHvrTtl), transform var(--animTimeHvrTtl);
+}
+
+
+@keyframes beginTitle {
+    0%{
+        opacity: 0%;
+        transform: translateY(-5rem);
+    }100%{
+        opacity: 100%;
+        transform: translateY(0);
+    }
+}
+
+#chkboxMenu{
+    display: none;
+}
+
+#chkboxMenu:checked ~ .menuBgPhone{
+    background-color: #131313;
+    width: 300vw;
+    height: 300vh;
+}
+
+.btnMenuPhone:hover{
+    cursor: pointer;
+    background-color: var(--bgHeaderNrml);
+    width: 90px;
+}
+
+.btnMenuPhone{
+    z-index: 1;
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 17px;
+    margin-left: 20px;
+
+    width: 70px;
+    height: 70px;
+
+    background-color: var(--bgHeader);
+    border-radius: 0.5rem;
+    box-shadow: 0px 5px 5px #11111180;
+
+    transition: background-color var(--animTimeHvrTtl), width var(--animTimeHvrTtl);
+
+    opacity: 0%;
+    transform: translateY(-100px);
+    animation: animBtnMenu 0.5s 1 forwards;
+    animation-delay: 0.25s;
+}
+
+@keyframes animBtnMenu {
+    0%{
+        opacity: 0%;
+        transform: translateX(-100px);
+    }100%{
+        opacity: 100%;
+        transform: translateX(0);
+    }
+}
+
+.menuBgPhone {
+    --animMenu : 1s;
+
+    position: fixed;
+    z-index: -1;
+
+    right: -100vw;
+    top: -100vh;
+    background-color: #111111;
+    border-radius: 50%;
+    width: 0vw;
+    height: 0vh;
+
+    overflow: hidden;
+
+    transition: background-color var(--animTimeHvrTtl), height var(--animMenu), width var(--animMenu);
+}
+
+.imgChkboxMenu{
+    height: 30px;
+    opacity: 60%;
+    transform: rotate(45deg);
+    transition: transform var(--animTimeHvrTtl);
+}
+
+
+#chkboxMenu:checked ~ .btnMenuPhone>img{
+    transform: rotate(90deg);
+}
+
+
+.divMenuList{
+    display: flex;
+    visibility:hidden;
+    position: fixed;
+    left: 0;
+    top: 160px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0%;
+    transition: opacity var(--animTimeHvrTtl), visibility 0s;
+    transition-delay: 0s;
+}
+
+#chkboxMenu:checked ~ .divMenuList{
+    visibility: visible;
+    opacity: 100%;
+    transition-delay: 0.5s;
+}
+
+
+#chkboxContact{
+    display: none;
+}
+
+
+.linkedinImg{
+    background-color: var(--bgfooter);
+    border-radius: 10px;
+    width: 220px;;
+    transition: width var(--animFooter), opacity var(--animFooter);
+    opacity: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+.linkedinImg:hover{
+    width: 300px;
+    opacity: 100%;
+    cursor: pointer;
+}
+
+.linkedinImg:hover > img{
+    opacity: 80%;
+}
+
+.linkedinImg>img{
+    padding: 10px;
+    width: 200px;
+    opacity: 50%;
+    transition: opacity var(--animFooter);
+}
+
+.contact{
+    display: block;
+    background-color: var(--bgfooter);
+    color: var(--contactColor);
+    border-radius: 10px;
+    padding: 10px;
+    opacity: 80%;
+    margin: 30px;
+    transition: opacity var(--animFooter);
+}
+
+.contact:hover{
+    cursor: pointer;
+}
+
+#chkboxContact:checked ~ .contact{
+    opacity: 100%;
+}
+
+#chkboxContact:checked ~ .contact > .emailContainer{
+    grid-template-rows: 1fr;
+    grid-template-columns : 1fr;
+}
+
+
+.nameContact{
+    font-weight: 600;
+    user-select: none;
+}
+
+.emailContainer{
+    display: grid;
+    grid-template-rows: 0fr;
+    grid-template-columns: 0fr;
+    transition: grid-template-rows var(--animFooter), grid-template-columns var(--animFooter);
+}
+
+.emailContact{
+    overflow: hidden;
+}
